@@ -1,0 +1,81 @@
+.ui.cards {
+    margin: 0 !important;
+}
+
+.productGroup {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.productCard {
+    width: calc(100%/5);
+    padding: 5px;
+}
+
+
+
+/* Tablet / iPad Portrait */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .productCard {
+        width: calc(100%/5);
+        padding: 5px;
+    }
+}
+/* Computer / Desktop / iPad Landscape */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .productCard {
+        width: calc(100%/5);
+        padding: 5px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .productCard {
+        width: calc(100%/4);
+    }
+}
+  
+
+@media only screen and (min-width: 569px) and (max-width: 667px) {
+    .productCard {
+        width: calc(100%/3);
+    }
+}
+
+@media only screen and (width : 414px) and (height : 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio : 3) {
+    .productCard {
+        width: calc(100%/2);
+    }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3) {
+    .productCard {
+        width: calc(100%/2);
+    }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3) {
+    .productCard {
+        width: calc(100%/4);
+    }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+    .productCard {
+        width: calc(100%/2);
+    }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+    .productCard {
+        width: calc(100%/3);
+    }
+}
+@media only screen and (min-device-width : 320px) and (max-device-height : 568px) and (orientation : portrait) {
+    .productCard {
+        width: calc(100%/2);
+    }
+}

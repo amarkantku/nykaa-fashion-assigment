@@ -1,0 +1,11 @@
+.searchField {
+    padding: 1em 10em;
+    text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+    .searchField {
+        padding: 1em 1.5em;
+        text-align: center;
+    }
+}
