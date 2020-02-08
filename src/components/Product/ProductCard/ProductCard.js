@@ -8,8 +8,9 @@ const cx = classNames.bind(styles);
 export const ProductCard = ({productsData}) => {
     const renderCard = () => {
         return productsData.map(product => {
+            const size = product.sizeVariation.reduce((acc, item) => [...acc,item.title], []).join(', ');
             return (
-                <div className={cx('productCard')}>
+                <div className={cx('productCard')} key={product.sku}>
                     <Card key={product.sku}>
                         <Image size='small' className={cx('productImage')} src={product.imageUrl} wrapped ui={false} />
                         <Card.Content>
@@ -18,7 +19,7 @@ export const ProductCard = ({productsData}) => {
                                 {product.subTitle}
                             </Card.Description>
                              <Card.Meta>
-                                <span>XM</span>
+                                <span className={cx('productSize')}>{`Sizes: ${size}`}</span>
                             </Card.Meta>
                         </Card.Content>
                     </Card>

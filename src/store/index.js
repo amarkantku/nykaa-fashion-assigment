@@ -1,14 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware, { END } from 'redux-saga';
 import { createLogger } from 'redux-logger'
-import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from '../reducers';
 
-const composeEnhancers = composeWithDevTools || compose;
 
 export default function configureStore(initialState = {}) {
     const sagaMiddleware = createSagaMiddleware({});
-    const enhancer = composeEnhancers(
+    const enhancer = compose(
         applyMiddleware(
             sagaMiddleware,
             createLogger(),
