@@ -1,7 +1,8 @@
-import { FETCH_PRODUCT_SUCCESS } from '../actionTypes/ProductActionTypes';
+import { FETCH_PRODUCT_SUCCESS, SET_ERROR_INFO } from '../actionTypes/ProductActionTypes';
 
 const initialState = {
-    productsData: []
+    productsData: [],
+    errors: {},
 };
 export default function ProductReducer(state = initialState, action) {
     switch (action.type) {
@@ -9,6 +10,12 @@ export default function ProductReducer(state = initialState, action) {
             return {
                 ...state,
                 productsData: action.payload
+            }
+        }
+        case SET_ERROR_INFO: {
+            return {
+                ...state,
+                errors: action.payload
             }
         }
         default:

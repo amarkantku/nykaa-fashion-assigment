@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getProductList } from '../actions/ProductActions';
+import { getProductList, filterProducts } from '../actions/ProductActions';
 import Product from '../components/Product/Product';
 
 const mapStateToProps = ({productReducer}) => ({
@@ -10,6 +10,7 @@ const mapStateToProps = ({productReducer}) => ({
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators({
         getProductList,
+        filterProducts,
     }, dispatch),
 });
 

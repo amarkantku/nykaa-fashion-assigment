@@ -22,11 +22,12 @@ export default class Product extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            itemList: Array.from(Array(5).keys(), n => n + 1),
             scrollPos: 0,
+            keyword: '',
+            count: 5, // Assumption - load only five record on page load
         }
         this.delayedCallback = debounce(this.handleProductFilter, 500)
-        this.props.actions.getProductList();
+        this.loadProduct();
     }
     componentDidMount() {
         window.addEventListener('scroll', debounce(this.handleScroll, 1000));
@@ -34,6 +35,15 @@ export default class Product extends Component {
 
     componentWillUnmount(){
         window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    loadProduct = () => {
+        const { count, keyword } = this.state;
+        if(keyword) {
+            this.props.actions.filterProducts({ keyword });
+        } else {
+            this.props.actions.getProductList({ count });
+        }
     }
 
     handleScroll = () => {
@@ -44,9 +54,12 @@ export default class Product extends Component {
         } else {
             this.setState({
                 ...this.state,
+                count: this.state.count + 5,
                 scrollPos: document.body.getBoundingClientRect().top,
-                itemList: [...this.state.itemList, ...Array.from(Array(5).keys(), n => n + this.state.itemList.length + 1)],
+            }, () => {
+                this.loadProduct();
             });
+
         }
     }
 
@@ -55,8 +68,18 @@ export default class Product extends Component {
         this.delayedCallback(event.target.value);
     }
 
-    handleProductFilter(value) {
-        console.log(value)
+    handleProductFilter = (value) => {
+        this.setState({
+            ...this.state,
+            keyword: value 
+        }, () => {
+            const { keyword } = this.state;
+            if(keyword){
+                this.props.actions.filterProducts({ keyword });
+            } else {
+                this.loadProduct();
+            }
+        });
     }
 
     render() {
